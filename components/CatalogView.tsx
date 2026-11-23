@@ -11,19 +11,22 @@ export const CatalogView = ({ query }: { query: string }) => {
   const visible = [...results]
     .sort((a, b) => order === "asc" ? a.price - b.price : b.price - a.price);
   return (
-    <div className="mx-auto max-w-7xl px-5 py-10 md:px-10 md:py-14">
-      <Link href="/" className="text-sm font-semibold text-moss hover:underline">← Volver al inicio</Link>
-      <h1 className="mt-4 break-words font-serif text-5xl tracking-tight md:text-6xl">{query ? `Estancias para «${query}»` : "Estancias en Galicia"}</h1>
-      <div className="my-6 flex flex-wrap items-center justify-between gap-3 border-y border-line py-4">
+    <div className="mx-auto max-w-7xl px-5 pb-16 pt-6 md:px-10 md:pt-9">
+      <nav aria-label="Ruta del catálogo" className="flex items-center gap-2 text-sm text-ink/75">
+        <Link href="/" className="font-semibold text-moss hover:underline">Inicio</Link><span aria-hidden>/</span><span aria-current="page">Catálogo</span>
+      </nav>
+      <h1 className="mt-3 break-words font-serif text-4xl tracking-tight md:text-6xl">{query ? `Estancias para «${query}»` : "Estancias en Galicia"}</h1>
+      <div className="my-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-white p-3 md:my-6 md:px-4">
         <p role="status" className="text-sm font-semibold">{visible.length} {visible.length === 1 ? "alojamiento" : "alojamientos"}</p>
         <label className="flex items-center gap-2 text-sm">Ordenar por
-          <select value={order} onChange={(event) => setOrder(event.target.value)} className="rounded-md border border-line bg-white p-2">
+          <select value={order} onChange={(event) => setOrder(event.target.value)} className="min-h-10 rounded-lg border border-line bg-paper px-2 text-ink">
             <option value="asc">Precio ascendente</option>
             <option value="desc">Precio descendente</option>
           </select>
         </label>
+        {visible.length > 0 && <Link href="#mapa" className="inline-flex min-h-10 items-center rounded-lg border border-line px-3 text-sm font-semibold text-moss hover:bg-paper md:hidden">Ver mapa ↓</Link>}
       </div>
-      <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]">
+      <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] xl:gap-8">
         <section aria-label="Resultados"><StayGrid stays={visible} compact /></section>
         <StayMap stays={results} />
       </div>

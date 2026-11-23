@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { matches, stays } from "@/data/stays";
@@ -25,25 +24,24 @@ export const HomeView = () => {
   return (
     <>
       <Header search={<DestinationSearch query={query} onChange={setQuery} />} />
-      <main id="contenido" className="mx-auto max-w-7xl px-5 pb-16 pt-5 md:px-10 md:pt-8">
-        <section className="grid overflow-hidden rounded-2xl bg-moss text-white md:grid-cols-[1.08fr_1fr]">
-          <div className="px-6 py-9 md:px-12 md:py-14">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-100">Alojamientos en Galicia</p>
-            <h1 className="max-w-sm font-serif text-5xl leading-[0.98] tracking-tight md:text-6xl">Tu próxima escapada empieza aquí</h1>
-            <p className="mt-4 max-w-xs text-sm text-emerald-50 md:text-base">Encuentra una casa junto al mar, en el bosque o en un pueblo gallego.</p>
+      <main id="contenido" className="mx-auto max-w-7xl px-5 pb-16 md:px-10">
+        <section className="flex flex-wrap items-end justify-between gap-x-12 gap-y-4 border-b border-line py-6 md:py-9">
+          <div>
+            <h1 className="font-serif text-5xl leading-none tracking-tight md:text-7xl">Escapadas en Galicia</h1>
+            <p className="mt-3 max-w-lg text-sm leading-relaxed text-ink/80 md:text-base">Casas frente al mar, entre bosques y en pueblos para recorrer a pie.</p>
           </div>
-          <div className="relative min-h-40 bg-emerald-950 md:min-h-full">
-            <Image src="/stays/mar.jpg" alt="Casa de vacaciones rodeada de vegetación" fill loading="eager" fetchPriority="high" sizes="(max-width: 767px) 92vw, 50vw" className="object-cover object-center" />
-          </div>
+          <Link href="/catalog" className="inline-flex min-h-10 items-center gap-3 rounded-lg border border-moss/30 px-4 text-sm font-semibold text-moss hover:bg-moss hover:text-white">
+            Explorar catálogo <span aria-hidden>→</span>
+          </Link>
         </section>
-        <section className="mt-9 md:mt-12">
-          <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
-            <h2 className="font-serif text-3xl font-semibold md:text-4xl">Explora las estancias</h2>
-            <Link href="/catalog" className="text-sm font-semibold text-moss underline underline-offset-4">Ver catálogo</Link>
-          </div>
+        <section className="mt-4 md:mt-6">
           <CategoryBar active={category} onSelect={setCategory} />
-          <div className="mt-4" aria-busy={loaded === null}>
-            {loaded === null ? <p role="status">Cargando alojamientos…</p> : <StayGrid stays={visible} />}
+          <div className="mb-4 mt-4 flex flex-wrap items-end justify-between gap-2 md:mb-5 md:mt-6">
+            <h2 className="font-serif text-2xl font-semibold md:text-3xl">{category === "Todas" ? "Estancias para tu próxima escapada" : `Estancias · ${category}`}</h2>
+            {loaded !== null && <p aria-live="polite" className="text-sm text-ink/75">{visible.length} {visible.length === 1 ? "alojamiento" : "alojamientos"}</p>}
+          </div>
+          <div aria-busy={loaded === null}>
+            {loaded === null ? <p role="status" className="rounded-xl border border-line bg-white/50 p-5 text-sm">Cargando alojamientos…</p> : <StayGrid stays={visible} />}
           </div>
         </section>
       </main>
