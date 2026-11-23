@@ -28,7 +28,7 @@ export const RoomView = ({ id }: { id: string }) => {
           <div className="min-w-0 space-y-7">
             <HostInfo host={stay.host} />
             <section>
-              <h2 className="font-serif text-2xl font-semibold">Sobre el alojamiento</h2>
+              <h2 className="text-2xl font-bold tracking-tight">Sobre el alojamiento</h2>
               <p className="mt-2 max-w-xl leading-relaxed text-ink/80">{stay.description}</p>
             </section>
             <Amenities items={stay.amenities} />
@@ -37,7 +37,7 @@ export const RoomView = ({ id }: { id: string }) => {
         </div>
         <div className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-between gap-4 border-t border-line bg-white px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden">
           <p className="text-sm"><strong className="text-lg">{currency(stay.price)}</strong> / noche</p>
-          <Link href="#reserva" className="rounded-full bg-moss px-5 py-3 text-sm font-semibold text-white">Ver reserva</Link>
+          <Link href="#reserva" className="rounded-full bg-ember px-5 py-3 text-sm font-semibold text-white">Ver reserva</Link>
         </div>
       </>}
     </div>

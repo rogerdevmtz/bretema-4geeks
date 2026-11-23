@@ -16,7 +16,7 @@ export const CatalogView = ({ query }: { query: string }) => {
       <nav aria-label="Ruta del catálogo" className="flex items-center gap-2 text-sm text-ink/75">
         <Link href="/" className="font-semibold text-moss hover:underline">Inicio</Link><span aria-hidden>/</span><span aria-current="page">Catálogo</span>
       </nav>
-      <h1 className="mt-3 break-words font-serif text-4xl tracking-tight md:text-6xl">{query ? `Estancias para «${query}»` : "Estancias en Galicia"}</h1>
+      <h1 className="mt-3 break-words text-3xl font-bold tracking-tight md:text-[2.65rem]">{query ? `Estancias para «${query}»` : "Estancias en Galicia"}</h1>
       <div aria-label="Filtrar por servicio" role="group" className="mt-5 flex gap-2 overflow-x-auto px-1 py-2">
         {["", "Wi-Fi", "Cocina", "Aparcamiento", "Jardín", "Terraza"].map((item) => (
           <button key={item} type="button" aria-pressed={amenity === item} onClick={() => setAmenity(item)}
@@ -25,7 +25,7 @@ export const CatalogView = ({ query }: { query: string }) => {
           </button>
         ))}
       </div>
-      <div className="my-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-white p-3 md:my-6 md:px-4">
+      <div className="my-5 flex flex-wrap items-center justify-between gap-3 border-y border-line bg-white py-3 md:my-6">
         <p role="status" className="text-sm font-semibold">{visible.length} {visible.length === 1 ? "alojamiento" : "alojamientos"}</p>
         <label className="flex items-center gap-2 text-sm">Ordenar por
           <select value={order} onChange={(event) => setOrder(event.target.value)} className="min-h-10 rounded-lg border border-line bg-paper px-2 text-ink">

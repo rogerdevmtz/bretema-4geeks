@@ -2,13 +2,14 @@
 @import "react-day-picker/style.css" layer(components);
 
 @theme {
-  --color-paper: #f8f6ef;
-  --color-ink: #192b24;
-  --color-moss: #174739;
-  --color-line: #dadfd3;
+  --color-paper: #f7f7f3;
+  --color-ink: #232724;
+  --color-moss: #1c5c4e;
+  --color-ember: #a43f32;
+  --color-line: #e5e7e2;
 }
 
 @layer base {
-  body { @apply bg-paper text-ink antialiased; }
+  body { @apply bg-white text-ink antialiased; }
   :focus-visible { @apply outline-2 outline-offset-4 outline-moss; }
 }

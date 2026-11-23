@@ -8,9 +8,9 @@ export const Gallery = ({ images, title }: { images: string[]; title: string }) 
   const controls = "grid size-10 cursor-pointer place-items-center rounded-full bg-paper text-lg font-semibold text-ink shadow-sm hover:bg-white";
 
   return (
-    <section aria-label="Galería de fotos" className="grid gap-2 md:grid-cols-[minmax(0,1fr)_minmax(0,0.32fr)]">
-      <div className="relative isolate aspect-[4/3] overflow-hidden rounded-2xl bg-line md:aspect-[2.18]">
-        <Image src={`/stays/${images[index]}.jpg`} alt={`${title} · imagen ilustrativa ${index + 1}`} fill sizes="(max-width: 767px) 94vw, 900px" className="object-cover" />
+    <section aria-label="Galería de fotos" className="grid gap-2 md:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)]">
+      <div className="relative isolate aspect-[4/3] overflow-hidden rounded-2xl bg-line md:aspect-[1.85]">
+        <Image src={`/stays/${images[index]}.jpg`} alt={`${title} · imagen ilustrativa ${index + 1}`} fill sizes="(max-width: 767px) 94vw, 720px" className="object-cover" />
         <div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2 md:inset-x-4 md:bottom-4">
           <button type="button" aria-label="Foto anterior" onClick={() => move(-1)} className={controls}>←</button>
           <p aria-live="polite" className="rounded-full bg-ink/90 px-3 py-2 text-sm text-white">{index + 1} / {images.length}</p>

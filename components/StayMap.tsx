@@ -48,7 +48,7 @@ export const StayMap = ({ stays }: { stays: Stay[] }) => {
 
   return (
     <aside id="mapa" aria-label="Mapa interactivo de alojamientos" className="min-w-0 scroll-mt-5 overflow-hidden rounded-2xl border border-line bg-white shadow-sm md:sticky md:top-6">
-      <h2 className="flex items-center gap-2 border-b border-line px-4 py-3 font-serif text-xl font-semibold"><span aria-hidden className="text-moss">◈</span> Mapa de Galicia</h2>
+      <h2 className="flex items-center gap-2 border-b border-line px-4 py-3 text-xl font-bold tracking-tight"><span aria-hidden className="text-moss">◈</span> Mapa de Galicia</h2>
       {stays.length > 0 && <div ref={container} aria-label="Mapa de alojamientos de demostración" className="relative isolate z-0 h-80 bg-line md:h-[min(70vh,39rem)]" />}
       <div className="px-4 py-3 text-sm">
         {error && <p role="status">El mapa no está disponible en este momento.</p>}

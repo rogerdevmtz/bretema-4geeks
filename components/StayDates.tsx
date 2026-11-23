@@ -52,7 +52,7 @@ export const StayDates = ({ range, onChange }: { range: DateRange | undefined; o
       <div id="calendario-reserva" hidden={!field} className="@container mt-2 rounded-xl border border-line p-3">
         {field && <>
           <p role="status" className="text-sm font-semibold">{field === "from" ? "Elige la fecha de llegada" : "Elige la fecha de salida"}</p>
-          <DayPicker aria-label="Fechas de estancia" className="mt-2 [--rdp-accent-color:#174739] [--rdp-day-width:min(2rem,14cqw)] [--rdp-day-height:2rem] [--rdp-day_button-width:var(--rdp-day-width)] [--rdp-day_button-height:2rem]"
+          <DayPicker aria-label="Fechas de estancia" className="mt-2 [--rdp-accent-color:var(--color-moss)] [--rdp-day-width:min(2rem,14cqw)] [--rdp-day-height:2rem] [--rdp-day_button-width:var(--rdp-day-width)] [--rdp-day_button-height:2rem]"
             mode="single" required locale={es} month={month} onMonthChange={setMonth} selected={range?.[field]}
             onSelect={select} disabled={{ before: firstAvailable }}
           />

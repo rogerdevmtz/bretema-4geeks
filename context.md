@@ -4,11 +4,11 @@ Brétema es una demo de alojamientos vacacionales en Galicia. La persona usuaria
 
 ## Especificación previa a la implementación
 
-Punto de partida móvil: 375 px. A partir de 768 px, se amplían las cuadrículas y se colocan el mapa y la reserva en columnas secundarias. El lenguaje visual propio combina fondos cálidos, verde bosque y titulares serif.
+Punto de partida móvil: 375 px. A partir de 768 px, se amplían las cuadrículas y se colocan el mapa y la reserva en columnas secundarias. El lenguaje visual propio combina superficies claras, tipografía sans serif, verde atlántico y acciones en terracota.
 
 | Vista | Composición móvil y componentes | Props principales |
 | --- | --- | --- |
-| Inicio | `Header` con búsqueda encima de una portada fotográfica y la cuadrícula. `CategoryBar` encima de `StayGrid` en una columna. | `DestinationSearch(query, onChange)`, `CategoryBar(active, onSelect)`, `StayGrid(stays)`, `StayCard(stay)`. |
+| Inicio | `Header` con búsqueda encima de las categorías y la cuadrícula. `CategoryBar` encima de `StayGrid` en una columna. | `DestinationSearch(query, onChange)`, `CategoryBar(active, onSelect)`, `StayGrid(stays)`, `StayCard(stay)`. |
 | Catálogo | Cabecera con recuento y ordenación, `StayGrid` y `StayMap` debajo. En escritorio el mapa queda a la derecha. | `CatalogView(query)`, `StayGrid(stays)`, `StayMap(stays)`. |
 | Detalle | Enlace al catálogo, `Gallery`, `RoomHeading`, `HostInfo`, `Amenities` y `BookingCard`. En escritorio la galería presenta una foto principal y miniaturas a un lado, y la reserva queda a la derecha del contenido. | `RoomView(id)`, `Gallery(images, title)`, `RoomHeading(stay)`, `HostInfo(host)`, `Amenities(items)`, `BookingCard(price, maxGuests)`, `StayDates(range, onChange)`. |
 
@@ -18,6 +18,6 @@ Prompt de análisis: «A 375 px, enumera los componentes de cada vista, indica l
 
 ## Observaciones de las referencias a 375 px
 
-- Inicio: la búsqueda se coloca antes del descubrimiento y las categorías se recorren horizontalmente. Brétema conserva ese orden y combina una portada fotográfica de bosque con categorías accesibles junto a las tarjetas.
+- Inicio: la búsqueda se coloca antes del descubrimiento y las categorías se recorren horizontalmente. Brétema conserva ese orden y sitúa las categorías y el listado justo debajo del buscador, con una introducción mínima.
 - Catálogo: la referencia regional sitúa el destino y la búsqueda antes de las recomendaciones. Brétema abre directamente con el recuento y el control de precio exigidos por la rúbrica, junto a filtros por servicios.
 - Ficha: las fotos abren el recorrido móvil junto con el nombre y la valoración y la información continúa debajo. Brétema usa una galería con controles visibles y separa el anfitrión, los servicios y la reserva.
