@@ -16,8 +16,8 @@ Abre http://localhost:3000. Para comprobar el proyecto, ejecuta `npm run lint`, 
 ## Rutas
 
 - `/` — búsqueda instantánea, categorías y carga simulada.
-- `/catalog` — resultados reutilizando las tarjetas, orden por precio y vista previa del mapa.
-- `/rooms/[id]` — galería, ficha, anfitrión, servicios y simulación de reserva.
+- `/catalog` — resultados reutilizando las tarjetas, orden por precio y mapa interactivo.
+- `/rooms/[id]` — galería, ficha, anfitrión, servicios y simulación de reserva con fechas y total por noches.
 
 Next.js 16, React, TypeScript, App Router y Tailwind CSS. La especificación de las vistas está en [context.md](context.md). Los valores, nombres y reseñas son ficticios. Las fotos son ilustrativas y proceden de Unsplash. No se realizan reservas reales.
 
@@ -44,4 +44,7 @@ Next.js 16, React, TypeScript, App Router y Tailwind CSS. La especificación de 
 | 13. Utilidades de Tailwind para los estilos | Clases de utilidad en JSX y tokens compartidos en [globals.css](app/globals.css). |
 | 14. Evidencia del flujo de visión a especificación | [context.md](context.md) documenta referencias, observaciones a 375 px, prompt, componentes, props y disposición. |
 
-La rúbrica base admite una vista previa del mapa. El mapa interactivo y el selector de fechas son ampliaciones opcionales.
+## Retos opcionales
+
+- El mapa de Leaflet usa teselas de OpenStreetMap y muestra marcadores para los resultados filtrados. Sus coordenadas son aproximadas y corresponden a localidades, no a viviendas reales.
+- El calendario de React DayPicker selecciona entrada y salida, restringe fechas pasadas y calcula el importe multiplicando el precio por noche por el número de noches.

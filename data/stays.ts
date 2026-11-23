@@ -20,3 +20,11 @@ const normalize = (text: string) => text.toLocaleLowerCase("es").normalize("NFD"
 
 export const matches = (stay: Stay, query: string) =>
   normalize([stay.title, stay.location, stay.category].join(" ")).includes(normalize(query.trim()));
+
+// Puntos aproximados de las localidades de los anuncios ficticios.
+export const stayCoordinates: Record<string, [number, number]> = {
+  "luz-de-marea": [43.105, -9.218],
+  "entre-carballos": [42.586, -7.186],
+  "casa-do-patio": [42.19, -7.80],
+  "casa-da-fraga": [43.408, -8.171],
+};

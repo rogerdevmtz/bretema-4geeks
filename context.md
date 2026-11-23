@@ -9,8 +9,8 @@ Punto de partida móvil: 375 px. A partir de 768 px, se amplían las cuadrícula
 | Vista | Composición móvil y componentes | Props principales |
 | --- | --- | --- |
 | Inicio | `Header` con búsqueda encima de la portada. `CategoryBar` encima de `StayGrid` en una columna. | `DestinationSearch(query, onChange)`, `CategoryBar(active, onSelect)`, `StayGrid(stays)`, `StayCard(stay)`. |
-| Catálogo | Cabecera con recuento y ordenación, `StayGrid` y `MapPreview` debajo. En escritorio el mapa queda a la derecha. | `CatalogView(query)`, `StayGrid(stays)`. |
-| Detalle | Enlace al catálogo, `Gallery`, `RoomHeading`, `HostInfo`, `Amenities` y `BookingCard`. En escritorio la reserva queda a la derecha del contenido. | `RoomView(id)`, `Gallery(images, title)`, `RoomHeading(stay)`, `HostInfo(host)`, `Amenities(items)`, `BookingCard(price, maxGuests)`. |
+| Catálogo | Cabecera con recuento y ordenación, `StayGrid` y `StayMap` debajo. En escritorio el mapa queda a la derecha. | `CatalogView(query)`, `StayGrid(stays)`, `StayMap(stays)`. |
+| Detalle | Enlace al catálogo, `Gallery`, `RoomHeading`, `HostInfo`, `Amenities` y `BookingCard`. En escritorio la reserva queda a la derecha del contenido. | `RoomView(id)`, `Gallery(images, title)`, `RoomHeading(stay)`, `HostInfo(host)`, `Amenities(items)`, `BookingCard(price, maxGuests)`, `StayDates(range, onChange)`. |
 
 Referencias funcionales: [inicio de Airbnb](https://www.airbnb.com/), [resultados de Galicia](https://www.airbnb.com/galicia-spain/stays) y [ficha de alojamiento](https://www.airbnb.com/rooms/43698932). Se usan como referencia de arquitectura de información y del recorrido entre vistas. La marca, los textos y la composición de Brétema son propios.
 

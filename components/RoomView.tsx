@@ -23,7 +23,7 @@ export const RoomView = ({ id }: { id: string }) => {
       {stay === null && <h1 className="font-serif text-4xl">Alojamiento no disponible</h1>}
       {stay && <>
         <Gallery images={stay.images} title={stay.title} />
-        <div className="mt-8 grid items-start gap-8 md:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]">
+        <div className="mt-8 grid grid-cols-1 items-start gap-8 md:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]">
           <div className="space-y-7"><RoomHeading stay={stay} /><HostInfo host={stay.host} /><Amenities items={stay.amenities} /></div>
           <BookingCard price={stay.price} maxGuests={stay.maxGuests} />
         </div>

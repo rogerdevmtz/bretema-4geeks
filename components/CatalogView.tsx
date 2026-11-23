@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { matches, stays } from "@/data/stays";
 import { StayGrid } from "./StayGrid";
-import { MapPreview } from "./MapPreview";
+import { StayMap } from "./StayMap";
 
 export const CatalogView = ({ query }: { query: string }) => {
   const [order, setOrder] = useState("asc");
-  const visible = stays.filter((stay) => matches(stay, query))
+  const results = useMemo(() => stays.filter((stay) => matches(stay, query)), [query]);
+  const visible = [...results]
     .sort((a, b) => order === "asc" ? a.price - b.price : b.price - a.price);
   return (
     <div className="mx-auto max-w-7xl px-5 py-10 md:px-10 md:py-14">
@@ -24,7 +25,7 @@ export const CatalogView = ({ query }: { query: string }) => {
       </div>
       <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]">
         <section aria-label="Resultados"><StayGrid stays={visible} compact /></section>
-        <MapPreview />
+        <StayMap stays={results} />
       </div>
     </div>
   );
