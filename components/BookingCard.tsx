@@ -24,7 +24,8 @@ export const BookingCard = ({ price, maxGuests }: { price: number; maxGuests: nu
     <aside id="reserva" aria-label="Reserva de demostración" className="scroll-mt-5 rounded-2xl border border-line bg-white p-5 shadow-sm md:sticky md:top-6 md:p-4 xl:p-7">
       <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-moss">Reserva de demostración</p>
       <h2 className="font-serif text-3xl font-semibold">{currency(price)} <span className="font-sans text-sm font-normal">/ noche</span></h2>
-      <div className="my-5 flex flex-wrap items-center justify-between gap-3 border-y border-line py-4">
+      <div className="mt-5"><StayDates range={dates} onChange={changeDates} /></div>
+      <div className="mb-5 mt-2 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line px-3 py-3">
         <div><p className="text-sm font-semibold">Huéspedes</p><p className="text-xs text-ink/75">Máximo {maxGuests} personas</p></div>
         <div className="flex items-center gap-2">
           <button type="button" aria-label="Quitar huésped" disabled={guests === 1} onClick={() => changeGuests(-1)} className="size-9 cursor-pointer rounded-full border border-line disabled:cursor-default disabled:opacity-35">−</button>
@@ -32,7 +33,6 @@ export const BookingCard = ({ price, maxGuests }: { price: number; maxGuests: nu
           <button type="button" aria-label="Añadir huésped" disabled={guests === maxGuests} onClick={() => changeGuests(1)} className="size-9 cursor-pointer rounded-full border border-line disabled:cursor-default disabled:opacity-35">+</button>
         </div>
       </div>
-      <StayDates range={dates} onChange={changeDates} />
       {nights > 0 && <p role="status" className="mb-4 flex justify-between gap-2 border-t border-line pt-3 text-sm">
         <span>{nights} {nights === 1 ? "noche" : "noches"}</span><strong>Total: {currency(nights * price)}</strong>
       </p>}
