@@ -1,12 +1,14 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 
-export const Header = () => (
+export const Header = ({ search }: { search?: ReactNode }) => (
   <header className="border-b border-line">
     <a href="#contenido" className="sr-only focus:not-sr-only">Saltar al contenido</a>
-    <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-10">
+    <div className="relative mx-auto flex max-w-7xl items-center flex-wrap justify-between gap-x-4 gap-y-3 px-5 py-4 md:px-10">
       <Link href="/" className="flex items-center gap-2 font-serif text-3xl font-bold tracking-tight">
         <span aria-hidden className="grid size-8 place-items-center rounded-full bg-moss text-lg text-white">≈</span>Brétema
       </Link>
+      {search && <div className="order-last w-full md:order-none md:w-auto md:flex-1 md:max-w-md">{search}</div>}
       <nav aria-label="Principal" className="flex items-center gap-4 text-sm font-semibold md:gap-8">
         <Link href="/" className="hidden hover:underline sm:inline">Inicio</Link>
         <Link href="/catalog" className="hover:underline">Catálogo</Link>

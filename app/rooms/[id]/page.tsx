@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import type { Metadata } from "next";
 import { RoomView } from "@/components/RoomView";
 import { stays } from "@/data/stays";
@@ -11,6 +12,11 @@ export const generateMetadata = async ({ params }: RoomProps): Promise<Metadata>
 
 const RoomPage = async ({ params }: RoomProps) => {
   const { id } = await params;
-  return <RoomView key={id} id={id} />;
+  return (
+    <>
+      <Header />
+      <main id="contenido"><RoomView key={id} id={id} /></main>
+    </>
+  );
 };
 export default RoomPage;

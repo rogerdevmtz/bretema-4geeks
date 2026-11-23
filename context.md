@@ -8,7 +8,7 @@ Punto de partida móvil: 375 px. A partir de 768 px, se amplían las cuadrícula
 
 | Vista | Composición móvil y componentes | Props principales |
 | --- | --- | --- |
-| Inicio | `Header` encima de una portada con búsqueda. `CategoryBar` encima de `StayGrid` en una columna. | `CategoryBar(active, onSelect)`, `StayGrid(stays)`, `StayCard(stay)`. |
+| Inicio | `Header` con búsqueda encima de la portada. `CategoryBar` encima de `StayGrid` en una columna. | `DestinationSearch(query, onChange)`, `CategoryBar(active, onSelect)`, `StayGrid(stays)`, `StayCard(stay)`. |
 | Catálogo | Cabecera con recuento y ordenación, `StayGrid` y `MapPreview` debajo. En escritorio el mapa queda a la derecha. | `CatalogView(query)`, `StayGrid(stays)`. |
 | Detalle | Enlace al catálogo, `Gallery`, `RoomHeading`, `HostInfo`, `Amenities` y `BookingCard`. En escritorio la reserva queda a la derecha del contenido. | `RoomView(id)`, `Gallery(images, title)`, `RoomHeading(stay)`, `HostInfo(host)`, `Amenities(items)`, `BookingCard(price, maxGuests)`. |
 
