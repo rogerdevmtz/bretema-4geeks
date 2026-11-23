@@ -21,7 +21,7 @@ export const BookingCard = ({ price, maxGuests }: { price: number; maxGuests: nu
   };
 
   return (
-    <aside aria-label="Reserva de demostración" className="rounded-2xl border border-line bg-white p-5 shadow-sm md:sticky md:top-6 md:p-4 xl:p-7">
+    <aside id="reserva" aria-label="Reserva de demostración" className="scroll-mt-5 rounded-2xl border border-line bg-white p-5 shadow-sm md:sticky md:top-6 md:p-4 xl:p-7">
       <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-moss">Reserva de demostración</p>
       <h2 className="font-serif text-3xl font-semibold">{currency(price)} <span className="font-sans text-sm font-normal">/ noche</span></h2>
       <div className="my-5 flex flex-wrap items-center justify-between gap-3 border-y border-line py-4">

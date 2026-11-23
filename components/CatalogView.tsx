@@ -7,15 +7,24 @@ import { StayMap } from "./StayMap";
 
 export const CatalogView = ({ query }: { query: string }) => {
   const [order, setOrder] = useState("asc");
-  const results = useMemo(() => stays.filter((stay) => matches(stay, query)), [query]);
+  const [amenity, setAmenity] = useState("");
+  const results = useMemo(() => stays.filter((stay) => matches(stay, query) && (!amenity || stay.amenities.includes(amenity))), [query, amenity]);
   const visible = [...results]
     .sort((a, b) => order === "asc" ? a.price - b.price : b.price - a.price);
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-16 pt-6 md:px-10 md:pt-9">
+    <div className="mx-auto max-w-[96rem] px-5 pb-16 pt-6 md:px-10 md:pt-9">
       <nav aria-label="Ruta del catálogo" className="flex items-center gap-2 text-sm text-ink/75">
         <Link href="/" className="font-semibold text-moss hover:underline">Inicio</Link><span aria-hidden>/</span><span aria-current="page">Catálogo</span>
       </nav>
       <h1 className="mt-3 break-words font-serif text-4xl tracking-tight md:text-6xl">{query ? `Estancias para «${query}»` : "Estancias en Galicia"}</h1>
+      <div aria-label="Filtrar por servicio" role="group" className="mt-5 flex gap-2 overflow-x-auto px-1 py-2">
+        {["", "Wi-Fi", "Cocina", "Aparcamiento", "Jardín", "Terraza"].map((item) => (
+          <button key={item} type="button" aria-pressed={amenity === item} onClick={() => setAmenity(item)}
+            className="min-h-10 shrink-0 cursor-pointer rounded-full border border-line bg-white px-4 text-sm font-medium text-ink hover:border-moss aria-pressed:border-moss aria-pressed:bg-moss aria-pressed:text-white">
+            {item || "Todos los servicios"}
+          </button>
+        ))}
+      </div>
       <div className="my-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-white p-3 md:my-6 md:px-4">
         <p role="status" className="text-sm font-semibold">{visible.length} {visible.length === 1 ? "alojamiento" : "alojamientos"}</p>
         <label className="flex items-center gap-2 text-sm">Ordenar por
@@ -26,7 +35,7 @@ export const CatalogView = ({ query }: { query: string }) => {
         </label>
         {visible.length > 0 && <Link href="#mapa" className="inline-flex min-h-10 items-center rounded-lg border border-line px-3 text-sm font-semibold text-moss hover:bg-paper md:hidden">Ver mapa ↓</Link>}
       </div>
-      <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] xl:gap-8">
+      <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] xl:gap-8">
         <section aria-label="Resultados"><StayGrid stays={visible} compact /></section>
         <StayMap stays={results} />
       </div>

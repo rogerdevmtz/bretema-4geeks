@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { stays } from "@/data/stays";
+import { currency, stays } from "@/data/stays";
 import type { Stay } from "@/types/stay";
 import { Amenities } from "./Amenities";
 import { BookingCard } from "./BookingCard";
@@ -17,7 +17,7 @@ export const RoomView = ({ id }: { id: string }) => {
   }, [id]);
 
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-16 pt-6 md:px-10 md:pt-9">
+    <div className="mx-auto max-w-6xl px-5 pb-24 md:pb-16 pt-6 md:px-10 md:pt-9">
       <Link href="/catalog" className="mb-5 inline-block text-sm font-semibold text-moss hover:underline">← Volver al catálogo</Link>
       {stay === undefined && <p role="status">Cargando alojamiento…</p>}
       {stay === null && <h1 className="font-serif text-4xl">Alojamiento no disponible</h1>}
@@ -34,6 +34,10 @@ export const RoomView = ({ id }: { id: string }) => {
             <Amenities items={stay.amenities} />
           </div>
           <BookingCard price={stay.price} maxGuests={stay.maxGuests} />
+        </div>
+        <div className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-between gap-4 border-t border-line bg-white px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden">
+          <p className="text-sm"><strong className="text-lg">{currency(stay.price)}</strong> / noche</p>
+          <Link href="#reserva" className="rounded-full bg-moss px-5 py-3 text-sm font-semibold text-white">Ver reserva</Link>
         </div>
       </>}
     </div>

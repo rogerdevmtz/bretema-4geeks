@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { matches, stays } from "@/data/stays";
@@ -25,14 +26,17 @@ export const HomeView = () => {
     <>
       <Header search={<DestinationSearch query={query} onChange={setQuery} />} />
       <main id="contenido" className="mx-auto max-w-7xl px-5 pb-16 md:px-10">
-        <section className="flex flex-wrap items-end justify-between gap-x-12 gap-y-4 border-b border-line py-6 md:py-9">
-          <div>
-            <h1 className="font-serif text-5xl leading-none tracking-tight md:text-7xl">Escapadas en Galicia</h1>
-            <p className="mt-3 max-w-lg text-sm leading-relaxed text-ink/80 md:text-base">Casas frente al mar, entre bosques y en pueblos para recorrer a pie.</p>
+        <section className="relative isolate mt-5 flex min-h-[17rem] items-end overflow-hidden rounded-3xl bg-ink px-6 py-8 text-white md:mt-7 md:min-h-[23rem] md:px-12 md:py-11">
+          <Image src="/stays/bosque.jpg" alt="" fill sizes="(max-width: 767px) 100vw, 1200px" className="-z-20 object-cover object-[center_60%]" fetchPriority="high" />
+          <div aria-hidden className="absolute inset-0 -z-10 bg-linear-to-r from-[#10251e] via-[#10251e]/75 to-[#10251e]/10" />
+          <div className="max-w-lg">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-100">Estancias en Galicia</p>
+            <h1 className="font-serif text-[2.7rem] leading-[1.02] tracking-tight md:text-[4.6rem]">Tu próxima escapada, a tu ritmo.</h1>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/90 md:max-w-sm md:text-base">Explora casas junto al mar, refugios de bosque y pueblos para descubrir a pie.</p>
+            <Link href="/catalog" className="mt-5 inline-flex min-h-11 items-center gap-3 rounded-full bg-white px-5 text-sm font-semibold text-ink hover:bg-paper">
+              Explorar catálogo <span aria-hidden>→</span>
+            </Link>
           </div>
-          <Link href="/catalog" className="inline-flex min-h-10 items-center gap-3 rounded-lg border border-moss/30 px-4 text-sm font-semibold text-moss hover:bg-moss hover:text-white">
-            Explorar catálogo <span aria-hidden>→</span>
-          </Link>
         </section>
         <section className="mt-4 md:mt-6">
           <CategoryBar active={category} onSelect={setCategory} />
