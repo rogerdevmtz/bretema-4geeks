@@ -1,0 +1,24 @@
+import Link from "next/link";
+
+export const Header = () => (
+  <header className="border-b border-line">
+    <a href="#contenido" className="sr-only focus:not-sr-only">Saltar al contenido</a>
+    <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-10">
+      <Link href="/" className="flex items-center gap-2 font-serif text-3xl font-bold tracking-tight">
+        <span aria-hidden className="grid size-8 place-items-center rounded-full bg-moss text-lg text-white">≈</span>Brétema
+      </Link>
+      <nav aria-label="Principal" className="flex items-center gap-4 text-sm font-semibold md:gap-8">
+        <Link href="/" className="hidden hover:underline sm:inline">Inicio</Link>
+        <Link href="/catalog" className="hover:underline">Catálogo</Link>
+        <details className="group">
+          <summary aria-label="Menú de usuario" className="flex size-9 cursor-pointer list-none items-center justify-center rounded-full border border-line group-open:bg-white [&::-webkit-details-marker]:hidden">
+            <span aria-hidden>☰</span>
+          </summary>
+          <div className="absolute right-5 top-full z-10 grid min-w-40 gap-3 rounded-lg border border-line bg-paper p-4 shadow-lg md:right-10">
+            <Link href="/">Inicio</Link><Link href="/catalog">Catálogo</Link>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </header>
+);

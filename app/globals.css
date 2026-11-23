@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f8f6ef;
+  --color-ink: #192b24;
+  --color-moss: #174739;
+  --color-line: #dadfd3;
+}
+
+@layer base {
+  body { @apply bg-paper text-ink antialiased; }
+  :focus-visible { @apply outline-2 outline-offset-4 outline-moss; }
+}
